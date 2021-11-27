@@ -31,6 +31,9 @@ gem 'serviceworker-rails', '~> 0.6'
 # HTML Abstraction Markup Language - A Markup Haiku
 gem 'haml', '~> 5.2'
 
+# A Ruby gem to load environment variables from `.env`.
+gem 'dotenv-rails'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
