@@ -1,0 +1,132 @@
+!!!
+%html
+  %head
+    %title VOR Template
+    %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_packs_with_chunks_tag 'application', media: 'all'
+    = javascript_packs_with_chunks_tag 'application', 'vue_app', 'data-turbolinks-track': 'reload'
+  %body.hold-transition.sidebar-mini
+    .wrapper
+      %nav.main-header.navbar.navbar-expand.navbar-white.navbar-light
+        %ul.navbar-nav
+          %li.nav-item
+            %a.nav-link{"data-turbolinks" => "false", "data-widget" => "pushmenu", :href => "#"}
+              %i.fas.fa-bars
+          %li.nav-item.d-none.d-sm-inline-block
+            = link_to 'Home', root_path, class: 'nav-link'
+        %form.form-inline.ml-3
+          .input-group.input-group-sm
+            %input.form-control.form-control-navbar{"aria-label" => "Search", :placeholder => "Search", :type => "search"}/
+            .input-group-append
+              %button.btn.btn-navbar{:type => "submit"}
+                %i.fas.fa-search
+        %ul.navbar-nav.ml-auto
+          %li.nav-item.dropdown
+            %a.nav-link{"data-toggle" => "dropdown", :href => "#"}
+              %i.far.fa-comments
+              %span.badge.badge-danger.navbar-badge 3
+            .dropdown-menu.dropdown-menu-lg.dropdown-menu-right
+              %a.dropdown-item{:href => "#"}
+                .media
+                  %img.img-size-50.mr-3.img-circle{:alt => "User Avatar", :src => "https://picsum.photos/128"}/
+                  .media-body
+                    %h3.dropdown-item-title
+                      Brad Diesel
+                      %span.float-right.text-sm.text-danger
+                        %i.fas.fa-star
+                    %p.text-sm Call me whenever you can...
+                    %p.text-sm.text-muted
+                      %i.far.fa-clock.mr-1
+                      4 Hours Ago
+              .dropdown-divider
+              %a.dropdown-item{:href => "#"}
+                .media
+                  %img.img-size-50.img-circle.mr-3{:alt => "User Avatar", :src => "https://picsum.photos/128"}/
+                  .media-body
+                    %h3.dropdown-item-title
+                      Paul Keen
+                      %span.float-right.text-sm.text-muted
+                        %i.fas.fa-star
+                    %p.text-sm I got your message bro
+                    %p.text-sm.text-muted
+                      %i.far.fa-clock.mr-1
+                      4 Hours Ago
+              .dropdown-divider
+              %a.dropdown-item{:href => "#"}
+                .media
+                  %img.img-size-50.img-circle.mr-3{:alt => "User Avatar", :src => "https://picsum.photos/128"}/
+                  .media-body
+                    %h3.dropdown-item-title
+                      Nora Silvester
+                      %span.float-right.text-sm.text-warning
+                        %i.fas.fa-star
+                    %p.text-sm The subject goes here
+                    %p.text-sm.text-muted
+                      %i.far.fa-clock.mr-1
+                      4 Hours Ago
+              .dropdown-divider
+              %a.dropdown-item.dropdown-footer{:href => "#"} See All Messages
+          %li.nav-item.dropdown
+            %a.nav-link{"data-toggle" => "dropdown", :href => "#"}
+              %i.far.fa-bell
+              %span.badge.badge-warning.navbar-badge 15
+            .dropdown-menu.dropdown-menu-lg.dropdown-menu-right
+              %span.dropdown-header 15 Notifications
+              .dropdown-divider
+              %a.dropdown-item{:href => "#"}
+                %i.fas.fa-envelope.mr-2
+                4 new messages
+                %span.float-right.text-muted.text-sm 3 mins
+              .dropdown-divider
+              %a.dropdown-item{:href => "#"}
+                %i.fas.fa-users.mr-2
+                8 friend requests
+                %span.float-right.text-muted.text-sm 12 hours
+              .dropdown-divider
+              %a.dropdown-item{:href => "#"}
+                %i.fas.fa-file.mr-2
+                3 new reports
+                %span.float-right.text-muted.text-sm 2 days
+              .dropdown-divider
+              %a.dropdown-item.dropdown-footer{:href => "#"} See All Notifications
+          %li.nav-item
+            %a.nav-link{"data-slide" => "true", "data-widget" => "control-sidebar", :href => "#"}
+              %i.fas.fa-th-large
+      %aside.main-sidebar.sidebar-dark-primary.elevation-4
+        %a.brand-link{:href => "/", :target => "_blank"}
+          %img.brand-image.img-circle.elevation-3{:alt => "Vue.js Rails Starter Kit Logo", :src => "https://en.gravatar.com/userimage/9923380/136ee7664eb6f9a5e9a408290090a343.jpeg", :style => "opacity: .8"}/
+          %span.brand-text.font-weight-light VOR Template
+        .sidebar
+          %nav.mt-2
+            %ul.nav.nav-pills.nav-sidebar.flex-column{"data-accordion" => "false", "data-widget" => "treeview", :role => "menu"}
+              %li.nav-item.has-treeview.menu-open
+                %a.nav-link.active{:href => "#"}
+                  %i.nav-icon.fas.fa-tachometer-alt
+                  %p
+                    Starter Pages
+                    %i.right.fas.fa-angle-left
+                %ul.nav.nav-treeview
+                  %li.nav-item
+                    = link_to landing_index_path, class: 'nav-link' do
+                      %i.far.fa-circle.nav-icon
+                      %p Starter
+      .content-wrapper
+        .content-header
+          .container-fluid
+            .row.mb-2
+              .col-sm-6
+                %h1.m-0.text-dark.jt-title= yield(:title) || 'Starter Page'
+              .col-sm-6
+                %ol.breadcrumb.float-sm-right
+                  %li.breadcrumb-item
+                    %a{:href => "#"} Home
+                  %li.breadcrumb-item.active Starter Page
+        .content
+          = yield
+      %aside.control-sidebar.control-sidebar-dark
+        .p-3
+          %h5 Title
+          %p Sidebar content
+      %footer.main-footer
