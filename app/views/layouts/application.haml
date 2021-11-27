@@ -5,7 +5,6 @@
     %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
     = csrf_meta_tags
     = csp_meta_tag
-    = stylesheet_packs_with_chunks_tag 'application', media: 'all'
     = javascript_packs_with_chunks_tag 'application', 'vue_app', 'data-turbolinks-track': 'reload'
   %body.hold-transition.sidebar-mini
     .wrapper
